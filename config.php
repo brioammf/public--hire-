@@ -6,7 +6,7 @@ $username = "root";
 
 $password = ""; 
 
-$dbname = "matwanaculture"; 
+$dbname = "culture"; 
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 

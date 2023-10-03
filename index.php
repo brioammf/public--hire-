@@ -1,3 +1,29 @@
+<?php
+session_start();
+include "config.php";
+if(isset($_POST["sub"]))	  {
+      $id = $_POST['id'];
+      $phonenumber = $_POST['phonenumber'];
+      $date = $_POST['date'];
+      $passengers = $_POST['passengers'];
+      $book = $_POST['book'];
+		  $result = mysqli_query($conn,"FROM `login page` WHERE id='$id'"); 
+		  
+		  if($member_check ==0)
+		  {
+			  	  
+			  $query = mysqli_query($conn,"INSERT INTO `home`((`id`, `phonenumber`, `date`, `passengers`, `book`)) VALUES('$id','$phonenumber','$date','$passengers','$book')") 
+				  ;
+								  
+					  echo "<script>alert('Memeber Booked successful!!');location.href='index.php';</script>";
+				  }else{
+            echo "<script>alert('The member has already booked!!');</script>";
+
+          }
+		  }
+		
+		 
+?>
 <!doctype >
 
 <html lang="en" dir="ltr">
@@ -42,7 +68,7 @@
          
           <div class="form__group"> 
             <div class="inupt__group">
-              <input type="number"name="phonenumber" value="<?php echo $phonenumber;?>">  
+              <input type="number"name="phonenumber" value="<?php echo"$phonenumber"?>";>  
               <p>Enter your phone number</p>
           </div>
           
@@ -53,12 +79,12 @@
            </div>
            <div class="form__group">
             <div class="inupt__group">
-            <input type="text"name="passengers"value="<?php echo $passengers;?>">   
+            <input type="number"name="passengers"value="<?php "echo $passengers";?>">   
             <P>How many passengers</P> 
 </div>
           
           
-          <button class="primary___btn" value="update" name="update">Book Now</button>
+          <button class="primary___btn" value="<?php echo"$book";?>" name="update">Book Now</button>
       </div>
 
     </div>
@@ -66,14 +92,14 @@
   </header>
   <br><br>
   <section class="section__container popular__container">
-  <h2 class="section__header">Popular Nganyas</h2>
+  <h2 class="section__header">Available Nganyas</h2>
   <div class="image-container">
   <div class="image-row top-row">
     <img src="boombox.jpg" alt="Image 1">
     <img src="genesis.jpg" alt="Image 2">
     <img src="oppsite.jpg" alt="Image 3">
   </div>
-  <h2 class="section__header">  Popular Sacco</h2>
+  <h2 class="section__header">  Available Sacco</h2>
   <div class="image-row bottom-row">
     <img src="Easy Coach.jpg" alt="Image 4"width="">
     <img src="2nk.jpg" alt="Image 5" width="900px"height="900px">
